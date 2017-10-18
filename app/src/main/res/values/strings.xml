@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">HW03</string>
+    <string name="album_hint">Album title</string>
+    <string name="artist_hint">Artist name</string>
+    <string name="track_hint">Track title</string>
+    <string name="button_scrobble">Get latest scrobble</string>
 </resources>
