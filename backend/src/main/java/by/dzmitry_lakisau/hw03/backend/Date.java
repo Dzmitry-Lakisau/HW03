@@ -1,16 +1,15 @@
 package by.dzmitry_lakisau.hw03.backend;
 
-import com.google.gson.annotations.SerializedName;
+import com.googlecode.objectify.annotation.Index;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class Date {
 
-    @SerializedName("uts")
+    @Index
     private long mUnixDate;
 
-    @SerializedName("#text")
     private String mFormattedDate;
 
     public long getUnixDate() {

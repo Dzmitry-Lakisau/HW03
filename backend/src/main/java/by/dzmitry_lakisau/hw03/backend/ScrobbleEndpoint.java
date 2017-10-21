@@ -3,13 +3,8 @@ package by.dzmitry_lakisau.hw03.backend;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-import com.google.api.server.spi.response.CollectionResponse;
-import com.google.appengine.api.datastore.Cursor;
-import com.google.appengine.api.datastore.QueryResultIterator;
 import com.googlecode.objectify.ObjectifyService;
-import com.googlecode.objectify.cmd.Query;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -42,29 +37,15 @@ public class ScrobbleEndpoint {
     /**
      * This method gets the <code>Scrobble</code> object associated with the specified <code>id</code>.
      *
-     * @param id The id of the object to be returned.
      * @return The <code>Scrobble</code> associated with <code>id</code>.
      */
-    @ApiMethod(name = "getLatestScrobble", path = "scrobble/{id}")
+    @ApiMethod(name = "getLatestScrobble", path = "scrobble")
     public Scrobble getLatestScrobble() {
         logger.info("Calling getScrobble method");
 
-//        Long id = ofy().load().type(Scrobble.class).count();
-//        Scrobble scrobble = ofy().load().type(Scrobble.class). .id(id).now();
-//        return scrobble;
-        Query<Scrobble> query = ofy().load().type(Scrobble.class).limit(10);
-        String cursor = "1";
-        if (cursor != null) {
-            query = query.startAt(Cursor.fromWebSafeString(cursor));
-        }
-        QueryResultIterator<Scrobble> queryIterator = query.iterator();
-        List<Scrobble> scrobblesList = new ArrayList<Scrobble>(10);
-        while (queryIterator.hasNext()) {
-            scrobblesList.add(queryIterator.next());
-        }
-
-        return scrobblesList.get(scrobblesList.size());
-        //return CollectionResponse.<Scrobble>builder().setItems(scrobblesList).setNextPageToken(queryIterator.getCursor().toWebSafeString()).build();
+        List<Scrobble> s =  ofy().load().type(Scrobble.class).order("-mDate.mUnixDate").list();
+        Scrobble result = s.get(0);
+        return result;
     }
 
     /**
