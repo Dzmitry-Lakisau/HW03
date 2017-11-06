@@ -1,11 +1,10 @@
-package by.dzmitry_lakisau.hw03;
+package by.dzmitry_lakisau.hw03.json;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import by.dzmitry_lakisau.hw03.IScrobbleDate;
 
-public class Date {
+public class ScrobbleDate implements IScrobbleDate {
 
     @SerializedName("uts")
     private long mUnixDate;
@@ -27,12 +26,5 @@ public class Date {
 
     public void setFormattedDate(String mFormattedDate) {
         this.mFormattedDate = mFormattedDate;
-    }
-
-    public String convertUnixDate(){
-        java.util.Date date = new java.util.Date (mUnixDate * 1000L);
-        SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy, HH:mm:ss", Locale.ENGLISH);
-        String formattedDate = sdf.format(date);
-        return formattedDate;
     }
 }

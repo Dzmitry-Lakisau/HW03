@@ -4,7 +4,6 @@ import java.util.List;
 
 import by.dzmitry_lakisau.hw03.Album;
 import by.dzmitry_lakisau.hw03.Artist;
-import by.dzmitry_lakisau.hw03.Date;
 import by.dzmitry_lakisau.hw03.IScrobble;
 import by.dzmitry_lakisau.hw03.Image;
 
@@ -14,7 +13,7 @@ public class Scrobble implements IScrobble {
     private String mTrack;
     private Album mAlbum;
     private List<Image> mImages;
-    private Date mDate;
+    private ScrobbleDate mScrobbleDate;
 
     public void setArtist(Artist mArtist) {
         this.mArtist = mArtist;
@@ -32,8 +31,8 @@ public class Scrobble implements IScrobble {
         this.mImages = mImages;
     }
 
-    public void setDate(Date mDate) {
-        this.mDate = mDate;
+    public void setDate(ScrobbleDate mScrobbleDate) {
+        this.mScrobbleDate = mScrobbleDate;
     }
 
     @Override
@@ -57,7 +56,7 @@ public class Scrobble implements IScrobble {
     }
 
     @Override
-    public Date getDate(){
-        return mDate;
+    public ScrobbleDate getScrobbleDate(){
+        return mScrobbleDate;
     }
 }

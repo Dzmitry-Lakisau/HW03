@@ -6,7 +6,6 @@ import java.util.List;
 
 import by.dzmitry_lakisau.hw03.Album;
 import by.dzmitry_lakisau.hw03.Artist;
-import by.dzmitry_lakisau.hw03.Date;
 import by.dzmitry_lakisau.hw03.IScrobble;
 import by.dzmitry_lakisau.hw03.Image;
 
@@ -22,10 +21,10 @@ public class ScrobbleGSON implements IScrobble{
     private Album mAlbum;
 
     @SerializedName("image")
-    List<Image> mImages;
+    private List<Image> mImages;
 
     @SerializedName("date")
-    private Date mDate;
+    private ScrobbleDate mScrobbleDate;
 
     @Override
     public Artist getArtist() {
@@ -37,12 +36,12 @@ public class ScrobbleGSON implements IScrobble{
     }
 
     @Override
-    public Date getDate() {
-        return mDate;
+    public ScrobbleDate getScrobbleDate() {
+        return mScrobbleDate;
     }
 
-    public void setDate(Date mDate) {
-        this.mDate = mDate;
+    public void setScrobbleDate(ScrobbleDate mScrobbleDate) {
+        this.mScrobbleDate = mScrobbleDate;
     }
 
     @Override

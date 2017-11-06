@@ -9,12 +9,9 @@ import java.util.List;
 
 import by.dzmitry_lakisau.hw03.Album;
 import by.dzmitry_lakisau.hw03.Artist;
-import by.dzmitry_lakisau.hw03.Date;
 import by.dzmitry_lakisau.hw03.Image;
 
 public class ScrobblesListParser {
-
-//    private static final String text = "#text";
 
     List<Scrobble> scrobbles;
 
@@ -50,10 +47,10 @@ public class ScrobblesListParser {
                 }
                 scrobble.setImage(images);
                 jsonObject = tracksArray.optJSONObject(i).optJSONObject("date");//.optLong("uts");
-                Date date = new Date();
-                date.setFormattedDate(jsonObject.optString("#text"));
-                date.setUnixDate(jsonObject.optLong("uts"));
-                scrobble.setDate(date);
+                ScrobbleDate scrobbleDate = new ScrobbleDate();
+                scrobbleDate.setFormattedDate(jsonObject.optString("#text"));
+                scrobbleDate.setUnixDate(jsonObject.optLong("uts"));
+                scrobble.setDate(scrobbleDate);
                 scrobbles.add(scrobble);
             }
 

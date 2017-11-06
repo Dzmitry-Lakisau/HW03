@@ -128,6 +128,6 @@ public class ParserTest {
         final ScrobblesListGSONParser scrobblesListGSONParser = new ScrobblesListGSONParser();
         List<ScrobbleGSON> scrobbleGSONList = scrobblesListGSONParser.parse(out.toString()).getRecentTracks().getScrobblesListGSON();
         assertEquals(scrobbleGSONList.size(), 10);
-        assertEquals(scrobbleGSONList.get(9).getDate().convertUnixDate(), EXPECTED_CONVERTED_DATE);
+        assertEquals(scrobbleGSONList.get(9).getScrobbleDate().getFormattedDate(), EXPECTED_CONVERTED_DATE);
     }
 }

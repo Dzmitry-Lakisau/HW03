@@ -2,6 +2,8 @@ package by.dzmitry_lakisau.hw03;
 
 import java.util.List;
 
+//import by.dzmitry_lakisau.hw03.json.ScrobbleDate;
+
 public interface IScrobble {
 
     Artist getArtist();
@@ -12,5 +14,5 @@ public interface IScrobble {
 
     List<Image> getImages();
 
-    Date getDate();
+    IScrobbleDate getScrobbleDate();
 }
